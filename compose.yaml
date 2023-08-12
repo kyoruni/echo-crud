@@ -3,9 +3,26 @@ services:
   app:
     build: .
     tty: true
+    restart: always
     ports:
       - 8080:8080
     volumes:
       - ./:/home/echo-crud
     command:
       - air
+  db:
+    build: ./database/
+    tty: true
+    restart: always
+    ports:
+      - 3306:3306
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - ./database/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./database/ddl:/docker-entrypoint-initdb.d
+      - echo-crud-db-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      TZ: 'Asia/Tokyo'
+volumes:
+  echo-crud-db-data:

@@ -1,0 +1,3 @@
+FROM mysql:8.1.0
+
+ENV LANG ja_JP.UTF-8
