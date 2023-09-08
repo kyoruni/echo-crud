@@ -15,8 +15,11 @@ services:
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_PORT: ${MYSQL_PORT}
-    command:
-      - air
+    command: >
+      air &&
+      ./database/migrate.sh
+    depends_on:
+      - db
   db:
     build: ./database/
     tty: true
