@@ -1,5 +1,5 @@
+USE echo-crud;
 
--- +migrate Up
 CREATE TABLE IF NOT EXISTS pokemons(
   id    INT           UNSIGNED NOT NULL AUTO_INCREMENT  COMMENT 'ID',
   no    INT           UNSIGNED NOT NULL                 COMMENT 'No.',
@@ -13,6 +13,3 @@ CREATE TABLE IF NOT EXISTS pokemons(
   s     INT           UNSIGNED NOT NULL                 COMMENT 'すばやさ',
   PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='ポケモン';
-
--- +migrate Down
-DROP TABLE IF EXISTS pokemons;
