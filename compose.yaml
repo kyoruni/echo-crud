@@ -8,13 +8,6 @@ services:
       - 8080:8080
     volumes:
       - ./:/home/echo-crud
-    environment:
-      # マイグレーション用
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-      MYSQL_HOST: ${MYSQL_HOST}
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-      MYSQL_PORT: ${MYSQL_PORT}
     command:
       - air
   db:
@@ -26,6 +19,7 @@ services:
     command: --default-authentication-plugin=mysql_native_password
     volumes:
       - ./database/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./database/ddl/:/docker-entrypoint-initdb.d/
       - db-data:/var/lib/mysql
     environment:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
