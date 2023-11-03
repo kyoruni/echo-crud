@@ -8,6 +8,7 @@ import (
 
 func GetPokemons(c echo.Context) error {
 	return c.Render(http.StatusOK, "pokemons/index", map[string]interface{}{
-		"pageTitle": "Echo CRUD | ポケモン一覧",
+		"pageTitle":   "Echo CRUD | ポケモン一覧",
+		"currentPath": c.Path(),
 	})
 }

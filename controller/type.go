@@ -8,6 +8,7 @@ import (
 
 func GetTypes(c echo.Context) error {
 	return c.Render(http.StatusOK, "types/index", map[string]interface{}{
-		"pageTitle": "Echo CRUD | タイプ一覧",
+		"pageTitle":   "Echo CRUD | タイプ一覧",
+		"currentPath": c.Path(),
 	})
 }
