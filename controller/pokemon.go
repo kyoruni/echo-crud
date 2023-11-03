@@ -7,5 +7,5 @@ import (
 )
 
 func GetPokemons(c echo.Context) error {
-	return c.String(http.StatusOK, "get pokemons")
+	return c.Render(http.StatusOK, "pokemons/index", nil)
 }
