@@ -12,5 +12,5 @@ type Template struct {
 }
 
 func (t *Template) Render(w io.Writer, name string, data interface{}, c echo.Context) error {
-	return t.Templates.ExecuteTemplate(w, name, data)
+	return template.Must(template.Must(t.Templates.Lookup("layout").Clone()).AddParseTree("content", t.Templates.Lookup(name).Tree)).ExecuteTemplate(w, "layout", data)
 }

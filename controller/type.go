@@ -7,5 +7,7 @@ import (
 )
 
 func GetTypes(c echo.Context) error {
-	return c.String(http.StatusOK, "get types")
+	return c.Render(http.StatusOK, "types/index", map[string]interface{}{
+		"pageTitle": "Echo CRUD | タイプ一覧",
+	})
 }

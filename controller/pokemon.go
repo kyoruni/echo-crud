@@ -7,5 +7,7 @@ import (
 )
 
 func GetPokemons(c echo.Context) error {
-	return c.Render(http.StatusOK, "pokemons/index", nil)
+	return c.Render(http.StatusOK, "pokemons/index", map[string]interface{}{
+		"pageTitle": "Echo CRUD | ポケモン一覧",
+	})
 }

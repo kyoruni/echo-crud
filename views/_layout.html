@@ -1,0 +1,17 @@
+{{- define "layout" }}
+{{- $param := . }}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{- $param.pageTitle }}</title>
+</head>
+<body>
+  <div class="content">
+    {{- template "content" . }}
+  </div>
+  <button type="button" class="btn">ボタン</button>
+</body>
+</html>
+{{ end -}}
