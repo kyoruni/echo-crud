@@ -1,3 +1,38 @@
 {{- define "pokemons/index" }}
-<h2>pokemons index!!</h2>
+  {{- $param := . }}
+  <h2>ポケモン一覧</h2>
+  <table class="table table-striped table-hover table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">No.</th>
+        <th scope="col">なまえ</th>
+        <th scope="col">ぶんるい</th>
+        <th scope="col" class="text-center" style="width: 5%">HP</th>
+        <th scope="col" class="text-center" style="width: 5%;">こうげき</th>
+        <th scope="col" class="text-center" style="width: 5%">ぼうぎょ</th>
+        <th scope="col" class="text-center" style="width: 5%">とくこう</th>
+        <th scope="col" class="text-center" style="width: 5%">とくぼう</th>
+        <th scope="col" class="text-center" style="width: 5%">すばやさ</th>
+        <th scope="col">登録日時</th>
+        <th scope="col">更新日時</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{ range $pokemon := $param.pokemons }}
+      <tr>
+        <th scope="row">{{ printf "%03d" $pokemon.No }}</th>
+        <td>{{ $pokemon.Name }}</td>
+        <td>{{ $pokemon.Species }}</td>
+        <td class="text-center">{{ $pokemon.H }}</td>
+        <td class="text-center">{{ $pokemon.A }}</td>
+        <td class="text-center">{{ $pokemon.B }}</td>
+        <td class="text-center">{{ $pokemon.C }}</td>
+        <td class="text-center">{{ $pokemon.D }}</td>
+        <td class="text-center">{{ $pokemon.S }}</td>
+        <td>{{ $pokemon.CreatedOn.Format "2006-01-02 15:04" }}</td>
+        <td>{{ $pokemon.ModifiedOn.Format "2006-01-02 15:04" }}</td>
+      </tr>
+    {{ end }}
+    </tbody>
+  </table>
 {{- end }}
