@@ -1,3 +1,7 @@
 {{- define "pokemons/index" }}
-<h2>pokemons index!!</h2>
+  {{- $param := . }}
+  <h2>pokemons index!!</h2>
+  {{ range $pokemon := $param.pokemons }}
+    <p>{{ $pokemon.Name }}</p>
+  {{ end }}
 {{- end }}
